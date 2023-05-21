@@ -5,10 +5,10 @@ variable "region" {
     default = "us-east-2"
 }
 variable "access_key" {
-    default = ""
+  #  default = "" , as the values specified in tfvars file so no need to use them here.
 }
 variable "secret_key" {
-    default = ""
+   # default = ""
 }
 
 variable "myamiid" {
