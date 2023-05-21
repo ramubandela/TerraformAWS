@@ -51,4 +51,20 @@ output "instance_public_dns" {
   value = "${aws_instance.myawsintance.public_ip}"
 }
 
+  provisioner "remote-exec" {
+
+    connection {
+       type        = "ssh"
+       user        = "ubuntu"
+       private_key = "$(file(myohiokey.pem))"
+       host        =  "${aws_instance.myawsintance.public_ip}"
+    }
+
+    inline = [
+      "sudo apt-get update",
+      "sudo apt-get install tomcat7 -y"
+    ]
+  }
+}
+
 
